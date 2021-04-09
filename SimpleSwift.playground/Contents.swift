@@ -1,11 +1,83 @@
 print("Welcome to the UW Calculator Playground")
 
+
 func calculate(_ args: [String]) -> Int {
+    
+    if(args[args.endIndex - 1] == "count") {
+        return args.count - 1
+    }else if (args[args.endIndex - 1] == "avg"){
+        if (args.count == 1) {
+            return 0
+        }
+        var sum = 0
+        for number in 0..<args.count - 1 {
+            sum = sum + Int(args[number])!
+            }
+        
+        return sum / (args.count - 1)
+        
+    } else if (args[args.endIndex - 1] == "fact") {
+        
+        if (args.count == 1) { //if there is no number and just the command
+            return 0
+        }
+        var n = Int(args[0])!
+        var sum = 1
+        while n > 0 {
+            sum = sum * n
+            n = n - 1
+        }
+        return sum
+    } else {
+    
+    if(args.count == 3) {
+        let first_num = Int(args[0])!
+        let second_num = Int(args[2])!
+        
+        let symbol = (args[1])
+        
+        if(symbol == "+") {
+            
+            return(first_num + second_num)
+            
+        } else if(symbol == "-"){
+            
+            return(first_num - second_num)
+            
+        } else if(symbol == "*"){
+            
+            return(first_num * second_num)
+            
+        } else if(symbol == "/"){
+            
+            return(first_num / second_num)
+            
+        } else{
+            
+            return(first_num % second_num)
+            
+        }
+    }
+    }
+    
     return -1
 }
 
 func calculate(_ arg: String) -> Int {
-    return -1
+    
+    //arg.split(regex: " ")
+    
+    //let line = arg
+    //let lineItems = line.split(separator: " ")
+    //print(lineItems)
+    //let test = calculate([lineItems)
+    
+    let splitStringArray = arg.split(separator: " ").map({ (substring) in
+        return String(substring)
+    })
+    let test = calculate(splitStringArray)
+    return test
+    
 }
 
 // -------------------------------------------
@@ -53,8 +125,9 @@ calculate("5 fact") == 120
 
 // Implement calculate([String]) and calculate(String)
 // to handle negative numbers
-/*
+
 calculate(["2", "+", "-2"]) == 0
+
 calculate(["2", "-", "-2"]) == 4
 calculate(["2", "*", "-2"]) == -4
 calculate(["2", "/", "-2"]) == -1
@@ -68,7 +141,7 @@ calculate("2 - -2") == 4
 calculate("-2 / 2") == -1
 
 calculate("1 -2 3 -4 5 count") == 5
-*/
+
  
 // Implement calculate([String]) and calculate(String)
 // to use floating-point values
