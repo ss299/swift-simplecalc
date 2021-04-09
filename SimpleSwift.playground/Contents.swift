@@ -204,20 +204,21 @@ calculate("1 -2 3 -4 5 count") == 5
  
 func calculate(_ args: [String]) -> Double {
     if(args.count == 3){
-        let first = Double(args[0])!
-        let operate = args[1]
-        let second = Double(args[2])!
+        let first_num = Double(args[0])!
+        let second_num = Double(args[2])!
+        let operater = args[1]
+
         
-        if(operate == "+"){
-            return first+second
-        } else if (operate == "-"){
-            return first-second
-        } else if(operate == "*"){
-            return first*second
-        } else if(operate == "/"){
-            return first/second
-        } else if (operate == "%"){
-            return first.truncatingRemainder(dividingBy: second)
+        if(operater == "+"){
+            return first_num + second_num
+        } else if (operater == "-"){
+            return first_num - second_num
+        } else if(operater == "*"){
+            return first_num * second_num
+        } else if(operater == "/"){
+            return first_num / second_num
+        } else if (operater == "%"){
+            return first_num.truncatingRemainder(dividingBy: second_num)
         }
         
     }
