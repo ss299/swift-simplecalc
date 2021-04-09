@@ -143,6 +143,38 @@ calculate("-2 / 2") == -1
 calculate("1 -2 3 -4 5 count") == 5
 
  
+func calculate(_ args: [String]) -> Double {
+    if(args.count == 3){
+        let first = Double(args[0])!
+        let operate = args[1]
+        let second = Double(args[2])!
+        
+        if(operate == "+"){
+            return first+second
+        } else if (operate == "-"){
+            return first-second
+        } else if(operate == "*"){
+            return first*second
+        } else if(operate == "/"){
+            return first/second
+        } else if (operate == "%"){
+            return first.truncatingRemainder(dividingBy: second)
+        }
+        
+    }
+    return -1.0
+}
+func calculate(_ arg: String) -> Double {
+    return -1.0
+}
+
+calculate(["2.0", "+", "2.0"]) == 4.0
+calculate([".5", "+", "1.5"]) == 2.0
+calculate(["12.0", "-", "12.0"]) == 0.0
+calculate(["2.5", "*", "2.5"]) == 6.25
+calculate(["2.0", "/", "2.0"]) == 1.0
+calculate(["2.0", "%", "2.0"]) == 0.0
+calculate("1.0 2.0 3.0 4.0 5.0 count") == 5
 // Implement calculate([String]) and calculate(String)
 // to use floating-point values
 /*
@@ -161,3 +193,4 @@ calculate(["2.0", "/", "2.0"]) == 1.0
 calculate(["2.0", "%", "2.0"]) == 0.0
 calculate("1.0 2.0 3.0 4.0 5.0 count") == 5
 */
+
